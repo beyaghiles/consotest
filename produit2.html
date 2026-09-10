@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORE-M6 - Crosscall</title>
+    <style>
+        :root {
+            --bg-main: #ffffff;
+            --text-main: #111111;
+            --text-light: #666666;
+            --accent-green: #bada55;
+            --border-color: #e0e0e0;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            font-size: 14px;
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo img {
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: #555;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .product-hero {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+            margin-bottom: 60px;
+        }
+
+        .media-side {
+            flex: 1.3;
+        }
+
+        /* Carrousel d'images défilantes */
+        .carousel {
+            width: 100%;
+            height: 480px;
+            overflow: hidden;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            background: #f4f4f4;
+            margin-bottom: 25px;
+        }
+
+        .carousel-track {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            animation: slideAnimation 12s infinite;
+        }
+
+        .carousel-slide {
+            width: 33.333%;
+            height: 100%;
+            flex-shrink: 0;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Contain pour ne pas couper le téléphone */
+            background-color: #f9f9f9;
+        }
+
+        /* Exception pour les photos d'ambiance qui doivent remplir le cadre */
+        .carousel-slide img.cover-img {
+            object-fit: cover;
+        }
+
+        @keyframes slideAnimation {
+            0% { transform: translateX(0); }
+            28% { transform: translateX(0); }
+            33% { transform: translateX(-33.333%); }
+            61% { transform: translateX(-33.333%); }
+            66% { transform: translateX(-66.666%); }
+            95% { transform: translateX(-66.666%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Vidéo */
+        .video-section {
+            width: 100%;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+        }
+
+        .video-section video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .info-side {
+            flex: 1;
+        }
+
+        .info-side h1 {
+            font-size: 32px;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .description {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn-buy {
+            display: block;
+            background-color: var(--accent-green);
+            color: #000000;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 2px;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+
+        .btn-back {
+            display: block;
+            text-align: center;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* Spécifications */
+        .specs-section {
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 40px;
+        }
+
+        .specs-section h2 {
+            font-size: 24px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .spec-category {
+            background: #f9f9f9;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        .spec-category h3 {
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-top: 0;
+            border-bottom: 2px solid var(--text-main);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+        }
+
+        .spec-label {
+            color: var(--text-light);
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .spec-value {
+            font-weight: 600;
+            text-align: right;
+            flex: 1.5;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="téléchargement.png" alt="Crosscall Logo">
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Accueil</a>
+            <a href="produit1.html">Stellar-X5</a>
+            <a href="produit2.html">Core-M6</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="product-hero">
+            <div class="media-side">
+                <div class="carousel">
+                    <div class="carousel-track">
+                        <div class="carousel-slide">
+                            <img src="CORE-M6.webp" alt="CORE-M6 Face et Dos">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="CORE-M6_BTP_CARRE.webp" alt="CORE-M6 Chantier BTP" class="cover-img">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="Hover_CM6.jpg" alt="CORE-M6 Terre Gants" class="cover-img">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-section">
+                    <video controls autoplay muted loop playsinline>
+                        <source src="VID_20260910_114238_308.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la lecture de vidéos.
+                    </video>
+                </div>
+            </div>
+
+            <div class="info-side">
+                <h1>CORE-M6</h1>
+                <div class="price">299,90 €</div>
+                <p class="description">
+                    Le smartphone pensé pour durer et conçu pour communiquer vraiment partout. Doté d'une résistance à toute épreuve (MIL-STD 810H), d'une batterie intelligente très haute capacité, et d'une technologie de réduction de bruit par IA pour vos environnements de travail les plus bruyants.
+                </p>
+                <a href="#" class="btn-buy">Ajouter au panier</a>
+                <a href="index.html" class="btn-back">&larr; Retour à l'accueil</a>
+            </div>
+        </div>
+
+        <div class="specs-section">
+            <h2>Caractéristiques détaillées</h2>
+            
+            <div class="specs-grid">
+                <div class="spec-category">
+                    <h3>Résistance & Extrême</h3>
+                    <div class="spec-row"><span class="spec-label">Norme IP & Militaire</span><span class="spec-value">IP68 / MIL-STD 810H</span></div>
+                    <div class="spec-row"><span class="spec-label">Chutes (Drop test)</span><span class="spec-value">2m sur béton (40 chutes)</span></div>
+                    <div class="spec-row"><span class="spec-label">Fluides supportés</span><span class="spec-value">Eau salée, Diesel, Gel hydro...</span></div>
+                    <div class="spec-row"><span class="spec-label">Température</span><span class="spec-value">-20°C à +60°C</span></div>
+                    <div class="spec-row"><span class="spec-label">Boutons programmables</span><span class="spec-value">3 (testés 700 000 appuis)</span></div>
+                </div>
+
+                <div class="spec-category">
+                    <h3>Écran & Système</h3>
+                    <div class="spec-row"><span class="spec-label">Écran</span><span class="spec-value">5,99” IPS Gorilla Glass (0.8mm)</span></div>
+                    <div class="spec-row"><span class="spec-label">Tactile</span><span class="spec-value">Wet & Glove touch (2mm)</span></div>
+                    <div class="spec-row"><span class="spec-label">Processeur</span><span class="spec-value">Qualcomm QCM4490 (Octa Core)</span></div>
+                    <div class="spec-row"><span class="spec-label">Mémoire</span><span class="spec-value">6 Go RAM / 128 Go Flash</span></div>
+                    <div class="spec-row"><span class="spec-label">OS et Mises à jour</span><span class="spec-value">Android 15 (prévu jusqu'à 20)</span></div>
+                </div>
+
+                <div class="spec-category">
+                    <h3>Autonomie & Garantie</h3>
+                    <div class="spec-row"><span class="spec-label">Capacité</span><span class="spec-value">4950 mAh (Li-Po)</span></div>
+                    <div class="spec-row"><span class="spec-label">Autonomie Com.</span><span class="spec-value">Jusqu’à 34h (4G)</span></div>
+                    <div class="spec-row"><span class="spec-label">Autonomie Veille</span><span class="spec-value">Jusqu’à 24 jours</span></div>
+                    <div class="spec-row"><span class="spec-label">Charge inversée</span><span class="spec-value">Oui, via USB-C</span></div>
+                    <div class="spec-row"><span class="spec-label">Garantie</span><span class="spec-value">5 ans (Batterie incluse)</span></div>
+                </div>
+
+                <div class="spec-category">
+                    <h3>Communication & Média</h3>
+                    <div class="spec-row"><span class="spec-label">Audio & HP</span><span class="spec-value">Haut-parleur frontal 102.5 dB</span></div>
+                    <div class="spec-row"><span class="spec-label">Réduction de bruit</span><span class="spec-value">IA upHear (jusqu’à -60 dB)</span></div>
+                    <div class="spec-row"><span class="spec-label">Réseau</span><span class="spec-value">5G / Wi-Fi 5 / Bluetooth 5.0</span></div>
+                    <div class="spec-row"><span class="spec-label">Caméra arrière</span><span class="spec-value">48 Mpx (Vidéo 1080p 60fps)</span></div>
+                    <div class="spec-row"><span class="spec-label">X-LINK / X-SPACE</span><span class="spec-value">Oui (Magnétique) / Oui</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

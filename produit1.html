@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STELLAR-X5 - Crosscall</title>
+    <style>
+        :root {
+            --bg-main: #ffffff;
+            --text-main: #111111;
+            --text-light: #666666;
+            --accent-green: #bada55;
+            --border-color: #e0e0e0;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            font-size: 14px;
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo img {
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: #555;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .product-hero {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+            margin-bottom: 60px;
+        }
+
+        .media-side {
+            flex: 1.3; /* Espace agrandi pour les visuels */
+        }
+
+        /* Carrousel d'images défilantes agrandi */
+        .carousel {
+            width: 100%;
+            height: 480px;
+            overflow: hidden;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            background: #000;
+            margin-bottom: 25px;
+        }
+
+        .carousel-track {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            animation: slideAnimation 12s infinite;
+        }
+
+        .carousel-slide {
+            width: 33.333%;
+            height: 100%;
+            flex-shrink: 0;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes slideAnimation {
+            0% { transform: translateX(0); }
+            28% { transform: translateX(0); }
+            33% { transform: translateX(-33.333%); }
+            61% { transform: translateX(-33.333%); }
+            66% { transform: translateX(-66.666%); }
+            95% { transform: translateX(-66.666%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Intégration de la vidéo */
+        .video-section {
+            width: 100%;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+        }
+
+        .video-section video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .info-side {
+            flex: 1;
+        }
+
+        .info-side h1 {
+            font-size: 32px;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .description {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn-buy {
+            display: block;
+            background-color: var(--accent-green);
+            color: #000000;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 2px;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+
+        .btn-back {
+            display: block;
+            text-align: center;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* Spécifications Techniques */
+        .specs-section {
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 40px;
+        }
+
+        .specs-section h2 {
+            font-size: 24px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .spec-category {
+            background: #f9f9f9;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        .spec-category h3 {
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-top: 0;
+            border-bottom: 2px solid var(--text-main);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+        }
+
+        .spec-label {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .spec-value {
+            font-weight: 600;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="téléchargement.png" alt="Crosscall Logo">
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Accueil</a>
+            <a href="produit1.html">Stellar-X5</a>
+            <a href="produit2.html">Core-M6</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="product-hero">
+            <div class="media-side">
+                <div class="carousel">
+                    <div class="carousel-track">
+                        <div class="carousel-slide">
+                            <img src="STELLAR-X5S.webp" alt="STELLAR-X5 Vue principale">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="Hover_SX5s.webp" alt="STELLAR-X5 Main étanche">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="STELLAR-X5_02_99a7a37b-1195-4f62-95e8-fb856c193abb.webp" alt="STELLAR-X5 Sous-marin">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-section">
+                    <video controls autoplay muted loop playsinline>
+                        <source src="VID_20260910_114542_907.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la lecture de vidéos.
+                    </video>
+                </div>
+            </div>
+
+            <div class="info-side">
+                <h1>STELLAR-X5</h1>
+                <div class="price">649,90 €</div>
+                <p class="description">
+                    Le smartphone étanche, endurant et taillé pour l'action. Conçu pour répondre aux exigences des utilisateurs les plus actifs, il offre une performance constante, une réparabilité exemplaire et une durabilité hors norme.
+                </p>
+                <a href="#" class="btn-buy">Ajouter au panier</a>
+                <a href="index.html" class="btn-back">&larr; Retour à l'accueil</a>
+            </div>
+        </div>
+
+        <div class="specs-section">
+            <h2>Caractéristiques détaillées</h2>
+            
+            <div class="specs-grid">
+                <div class="spec-category">
+                    <h3>Caractéristiques Outdoor</h3>
+                    <div class="spec-row"><span class="spec-label">Norme IP</span><span class="spec-value">IP68</span></div>
+                    <div class="spec-row"><span class="spec-label">Étanchéité eau salée</span><span class="spec-value">2m / 30mn</span></div>
+                    <div class="spec-row"><span class="spec-label">Étanchéité poussière</span><span class="spec-value">Oui</span></div>
+                    <div class="spec-row"><span class="spec-label">Température d'utilisation</span><span class="spec-value">-25°C / +60°C</span></div>
+                    <div class="spec-row"><span class="spec-label">Résistance</span><span class="spec-value">Drop test (40 chutes, 1m50)</span></div>
+                </div>
+
+                <div class="spec-category">
+                    <h3>Écran</h3>
+                    <div class="spec-row"><span class="spec-label">Taille</span><span class="spec-value">6,497’’ - 20:9</span></div>
+                    <div class="spec-row"><span class="spec-label">Type</span><span class="spec-value">IPS 60Hz à 120Hz</span></div>
+                    <div class="spec-row"><span class="spec-label">Protection</span><span class="spec-value">Gorilla Glass Victus2</span></div>
+                    <div class="spec-row"><span class="spec-label">Résolution</span><span class="spec-value">1080 x 2400 (FHD+)</span></div>
+                    <div class="spec-row"><span class="spec-label">Tactile</span><span class="spec-value">Wet & Glove touch</span></div>
+                </div>
+
+                <div class="spec-category">
+                    <h3>Batterie</h3>
+                    <div class="spec-row"><span class="spec-label">Capacité</span><span class="spec-value">4500 mAh</span></div>
+                    <div class="spec-row"><span class="spec-label">Cycles (Endurance)</span><span class="spec-value">1000</span></div>
+                    <div class="spec-row"><span class="spec-label">Autonomie communication</span><span class="spec-value">31h20</span></div>
+                    <div class="spec-row"><span class="spec-label">Autonomie veille</span><span class="spec-value">17j / 15j (4G/5G)</span></div>
+                    <div class="spec-row"><span class="spec-label">Charge inversée</span><span class="spec-value">Oui, via USB-C</span></div>
+                </div>
+
+                <div class="spec-category">
+                    <h3>Performances & Photo</h3>
+                    <div class="spec-row"><span class="spec-label">RAM / Flash</span><span class="spec-value">8 Go / 128 Go</span></div>
+                    <div class="spec-row"><span class="spec-label">Caméra principale</span><span class="spec-value">50 Mpx</span></div>
+                    <div class="spec-row"><span class="spec-label">Caméra grand angle</span><span class="spec-value">13 Mpx (120°)</span></div>
+                    <div class="spec-row"><span class="spec-label">Caméra frontale</span><span class="spec-value">16 MP (Fusion4)</span></div>
+                    <div class="spec-row"><span class="spec-label">Vidéo</span><span class="spec-value">4K @30fps / FHD @60fps</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

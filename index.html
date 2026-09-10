@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crosscall - Accueil</title>
+    <style>
+        :root {
+            --bg-main: #ffffff;
+            --text-main: #111111;
+            --text-light: #666666;
+            --accent-green: #bada55;
+            --border-color: #e0e0e0;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            font-size: 14px;
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        /* --- LOGO AGRANDI --- */
+        .logo img {
+            height: 45px; 
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: #000;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 480px;
+            background-image: url('REPARABILITE_BLOCK_2.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 38px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .hero-content p {
+            font-size: 16px;
+            margin-bottom: 25px;
+            color: #f0f0f0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: #000000;
+            padding: 12px 30px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 12px;
+            border-radius: 2px;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Sections & Grilles */
+        .container {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 24px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .grid-cards {
+            display: flex;
+            gap: 30px;
+        }
+
+        /* Grille adaptative pour les 5 nouvelles photos */
+        .grid-auto {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            flex: 1;
+            background: #f9f9f9;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: flex-start;
+        }
+
+        .card-body h3 {
+            font-size: 18px;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+        }
+
+        .card-body p {
+            color: var(--text-light);
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .card-link {
+            color: var(--text-main);
+            font-weight: bold;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: auto; /* Pousse le lien vers le bas */
+        }
+
+        .card-link:hover {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="téléchargement.png" alt="Crosscall Logo">
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Accueil</a>
+            <a href="produit1.html">Stellar-X5</a>
+            <a href="produit2.html">Core-M6</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Rugged by Design</h1>
+            <p>Des smartphones étanches, durables et pensés pour résister aux environnements les plus extrêmes.</p>
+            <a href="produit1.html" class="btn">Découvrir le STELLAR-X5</a>
+        </div>
+    </section>
+
+    <!-- Première section : L'Exigence -->
+    <div class="container">
+        <h2 class="section-title">L'Exigence de la Performance</h2>
+        <div class="grid-cards">
+            <div class="card">
+                <img src="La_Durabilite_est_notre_affaire_980x980_62d10806-0398-4795-a85a-2053c329a632.webp" alt="Durabilité Crosscall">
+                <div class="card-body">
+                    <h3>Durabilité & Réparabilité</h3>
+                    <p>Conçus pour durer longtemps, nos terminaux intègrent des composants robustes et facilement accessibles pour maximiser leur cycle de vie.</p>
+                    <a href="produit1.html" class="card-link">Voir la fiche &rarr;</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="TEL_PRO_1.webp" alt="Test en conditions réelles">
+                <div class="card-body">
+                    <h3>Testé en Conditions Réelles</h3>
+                    <p>Étanche, endurant et taillé pour l'action professionnelle ou sportive, chaque modèle subit des tests rigoureux de fiabilité.</p>
+                    <a href="produit2.html" class="card-link">Voir la fiche &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nouvelle section : Écosystème Professionnel (avec tes 5 photos) -->
+    <div class="container" style="margin-top: 20px; margin-bottom: 80px;">
+        <h2 class="section-title">Solutions & Écosystème Métiers</h2>
+        
+        <div class="grid-auto">
+            <!-- Photo 1 : Suivi et Traçabilité -->
+            <div class="card">
+                <img src="imgi_63_suivi-tracabilite_b1d946b6-92af-4395-926e-9c57d09d159e.webp" alt="Suivi logistique">
+                <div class="card-body">
+                    <h3>Suivi & Traçabilité</h3>
+                    <p>Optimisez votre logistique avec des terminaux robustes pour le scan et la gestion des stocks en temps réel.</p>
+                </div>
+            </div>
+
+            <!-- Photo 2 : Applications Métiers -->
+            <div class="card">
+                <img src="imgi_65_applications-metiers.webp" alt="Applications professionnelles">
+                <div class="card-body">
+                    <h3>Applications Métiers</h3>
+                    <p>Une compatibilité totale avec les logiciels et applications essentiels à votre cœur de métier.</p>
+                </div>
+            </div>
+
+            <!-- Photo 3 : X-TRACK -->
+            <div class="card">
+                <img src="imgi_82_x-track-log.webp" alt="Technologie X-TRACK">
+                <div class="card-body">
+                    <h3>Accessoires X-LINK™</h3>
+                    <p>Fixez, chargez et transférez vos données en un seul geste grâce à notre écosystème d'accessoires magnétiques.</p>
+                </div>
+            </div>
+
+            <!-- Photo 4 : X-TALK (Push-to-talk) -->
+            <div class="card">
+                <img src="imgi_85_x-talk-log.webp" alt="Application X-TALK">
+                <div class="card-body">
+                    <h3>Communication X-TALK</h3>
+                    <p>Transformez vos smartphones en talkies-walkies pour une communication d'équipe instantanée, partout dans le monde.</p>
+                </div>
+            </div>
+
+            <!-- Photo 5 : Flotte Mobile -->
+            <div class="card">
+                <img src="imgi_86_x-mob-log.webp" alt="Gestion de flotte X-MOB">
+                <div class="card-body">
+                    <h3>Gestion de Flotte (MDM)</h3>
+                    <p>Déployez, paramétrez et sécurisez facilement l'ensemble de votre parc mobile de manière centralisée.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
